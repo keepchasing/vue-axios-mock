@@ -1,7 +1,3 @@
-# present-right-to-buy
-
-> 茅酒汇注册送买酒资格活动
-
 ## Build Setup
 
 ``` bash
@@ -17,6 +13,15 @@ npm run build
 # build for production and view the bundle analyzer report
 npm run build --report
 ```
+
+## 项目需求：
+
+1.  通过二维码扫描进入引导页，输入手机号 验证是否注册（二维码链接上带有购酒资格码，且该码只能绑定一次）
+
+2.  已注册，出现带密码输入框弹框，验证登录，如购酒资格未使用，绑定购酒资格
+
+3.  未注册，注册后根据购酒资格是否可用送购酒资格
+
 
 
 ## 本项目技术点：
