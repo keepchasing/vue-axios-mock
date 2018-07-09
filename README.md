@@ -23,7 +23,6 @@ npm run build --report
 3.  未注册，注册后根据购酒资格是否可用送购酒资格
 
 
-
 ## 本项目技术点：
 
 1. mockjs----模拟服务器响应，完成前端数据调试
@@ -31,6 +30,9 @@ npm run build --report
 2. vuex----管理状态
 
 3. axios----接口请求数据
+
+4. px2rem----将样式中的px转为rem
+
 
 ## 项目封装组件：
 

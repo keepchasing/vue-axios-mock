@@ -21,11 +21,6 @@ module.exports = {
     image: 'xlink:href'
   },
   postcss: function () {
-    // let el = document.documentElement;
-    // let dpWidth = 375;
-    // let size = 16;
-    // let rootValue  = 375 / dpWidth * size;
-    // console.log(rootValue)
     return [px2rem({rootValue:37.5})];
   }
 }
