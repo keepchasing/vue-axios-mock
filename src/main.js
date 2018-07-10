@@ -6,7 +6,10 @@ import App from './App'
 import router from './router'
 import axios from 'axios'
 import store from './store'
-require('./mock/index.js')
+if(process.env.NODE_ENV === 'development')
+{
+  require('./mock/index.js')
+}
 // const unsync = sync(store, router) // done. Returns an unsync callback fn
 // unsync();
 // import DialogComponent from './components/dialog/index.js'
