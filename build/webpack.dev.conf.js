@@ -52,11 +52,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
     new webpack.NoEmitOnErrorsPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin
-    new HtmlWebpackPlugin({
+    /*new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
       inject: true
-    }),
+    }),*/
     // copy custom static assets
     new CopyWebpackPlugin([
       {
@@ -67,6 +67,22 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     ])
   ]
 })
+
+
+var pages = utils.getEntries('./src/module/**/*.html')
+for(var page in pages) {
+  // 配置生成的html文件，定义路径等
+  var conf = {
+    filename: page + '.html',
+    template: pages[page], //模板路径
+    inject: true,
+    // excludeChunks 允许跳过某些chunks, 而chunks告诉插件要引用entry里面的哪几个入口
+    excludeChunks: Object.keys(pages).filter((item) => item != page)
+  }
+  devWebpackConfig.plugins.push(new HtmlWebpackPlugin(conf))
+}
+
+
 
 module.exports = new Promise((resolve, reject) => {
   portfinder.basePort = process.env.PORT || config.dev.port

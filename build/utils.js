@@ -3,6 +3,20 @@ const path = require('path')
 const config = require('../config')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const packageConfig = require('../package.json')
+const glob = require('glob');
+
+exports.getEntries = function (globPath) {
+  var entries = {}
+  /**
+  * 读取src目录,并进行路径裁剪
+  */
+  glob.sync(globPath).forEach(function (entry) {
+  var basename = path.basename(entry, path.extname(entry), 'router.js') // 过滤router.js
+  entries[basename] = entry
+  });
+  // console.log(entries); // { main: './src/module/index/main.js', test: './src/module/test/test.js' }
+  return entries;
+  }
 
 exports.assetsPath = function (_path) {
   const assetsSubDirectory = process.env.NODE_ENV === 'production'
